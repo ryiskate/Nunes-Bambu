@@ -1,0 +1,23 @@
+<div class="row">
+<strong> luminária <%= @lamp.name %></strong>
+</div>
+
+<div class="row">
+    <p>
+        foto
+    </p>
+</div>
+
+<div class="row">
+    <strong>Descrição:</strong> <%= @lamp.description%> 
+</div>
+
+<div class="row">
+    <div class="col-md-3 col-md-offset-9">
+        <strong>Preço:</strong> $<%= @lamp.price %>
+    </div>
+</div>
+
+<div class="row">
+    <%= link_to 'Luminárias', lamps_path%>
+</div>
