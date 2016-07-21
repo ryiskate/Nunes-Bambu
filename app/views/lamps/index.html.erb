@@ -1,21 +1,9 @@
 <h1> Luminárias </h1>
 
-<% @lamp.each do |l|%>
-
-<div class="col-md-4">
-    <p>
-    <div class="row">
-        <strong><%= l.name %></strong>
-    </div>
-    <div class="row">
-        foto
-    </div>
-    <div class="row">
-        <strong>Preço: </strong>
-        <%= l.price %>
-    </div>
-    <%= link_to 'detalhes', lamp_path(l) %>
-    </p>
+<div class="row">
+<%= render 'lamps_list' %>
 </div>
 
-<% end %>
+<p>
+<%= link_to 'Home', home_index_path %>
+</p>

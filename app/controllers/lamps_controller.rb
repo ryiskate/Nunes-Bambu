@@ -9,12 +9,38 @@ class LampsController < ApplicationController
     end
     
     def new
+        @lamp = Lamp.new
+    end
+    
+    def edit
+        @lamp = Lamp.find(params[:id])
     end
     
     def create
         @lamp = Lamp.new(lamp_params)
-        @lamp.save
-        redirect_to @lamp
+        
+        if @lamp.save
+            redirect_to @lamp
+        else
+            render 'new'
+        end
+    end
+    
+    def update
+       @lamp = Lamp.find(params[:id])
+       
+       if @lamp.update(lamp_params)
+           redirect_to @lamp
+       else
+           render 'edit'
+       end
+    end
+    
+    def destroy
+        @lamp = Lamp.find(params[:id])
+        @lamp.destroy
+        
+        redirect_to admin_lamps_path
     end
     
     private

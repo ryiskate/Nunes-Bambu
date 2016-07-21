@@ -1,0 +1,23 @@
+<table class = "table table-hover table-condensed">
+    <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Preço</th>
+        <th></th>
+        <th></th>
+    </tr>
+    
+    <tbody>
+        <% @lamp.each do |l| %>
+        <tr>
+            <td><%= l.name %></td>
+            <td><%= l.description %></td>
+            <td><%= l.price %></td>
+            <td><%= link_to 'Editar', edit_lamp_path(l)%></td>
+            <td><%= link_to 'Apagar', lamp_path(l),
+                    method: :delete,
+                    data: {confirm: 'Você tem certeza que deseja apagar essa luminária?'} %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

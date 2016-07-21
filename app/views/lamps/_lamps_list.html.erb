@@ -1,0 +1,19 @@
+<% @lamp.each do |l|%>
+
+<div class="col-md-4">
+    <p>
+    <div class="row">
+        <strong><%= l.name %></strong>
+    </div>
+    <div class="row">
+        foto
+    </div>
+    <div class="row">
+        <strong>Preço: </strong>
+        <%= l.price %>
+    </div>
+    <%= link_to 'detalhes', lamp_path(l) %>
+    </p>
+</div>
+
+<% end %>
