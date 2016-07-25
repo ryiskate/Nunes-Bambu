@@ -13,7 +13,14 @@
         <%= l.price %>
     </div>
     <%= link_to 'detalhes', lamp_path(l) %>
+   
+    <% if current_user && current_user.admin? %> 
+        <p class="lamp-edit"> 
+        <%= link_to "Editar", edit_lamp_path(l.id) %> 
+        </p> 
+    <% end %>
     </p>
+
 </div>
 
 <% end %>

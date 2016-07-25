@@ -1,5 +1,7 @@
 class LampsController < ApplicationController
      #index, show, new, edit, create, update and destroy
+     before_action :require_admin, only: [:edit]
+     
     def index
         @lamp = Lamp.all
     end
