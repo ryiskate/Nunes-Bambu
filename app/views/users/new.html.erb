@@ -1,0 +1,18 @@
+<h1>Novo Usuário</h1>
+<% if @user.errors.any? %>
+<% byebug %>
+    <div id="errors_explanation">
+        <h2>
+            <%= pluralize(@user.errors.count, "Erro") %>: Não foi possivel cadastrar o usuário:
+        </h2>
+        <ul>
+            <% @user.errors.full_messages.each do |e| %>
+            <li><%= e %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<%= render 'uform' %>
+
+<%= link_to 'Cancelar', '/' %>
