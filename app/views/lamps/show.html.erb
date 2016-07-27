@@ -3,21 +3,53 @@
 </div>
 
 <div class="row">
+  <p>
+    foto
+  </p>
+</div>
+
+<div class="row">
+  <strong>Descrição:</strong> <%= @lamp.description%> 
+</div>
+
+<div class="row">
+  <div class="col-md-3 col-md-offset-9">
+    <strong>Preço:</strong> $<%= @lamp.price %>
+  </div>
+</div>
+
+<% if user_signed_in? %>
+  <h2>Add a comment:</h2>
+  <%= form_for([@lamp, @lamp.comments.build]) do |f| %>
     <p>
-        foto
+      <%= f.text_area :comment, :placeholder => "Comente aqui" %>
     </p>
-</div>
+    <p>
+      <%= f.submit %>
+    </p>
+    <% end %>
+<% else %>
+  <h2>
+    Entre para comentar
+  </h2>
+<% end %>
+
+<table class="table table-hover">
+  <tr>
+    <th>Nome</th>
+    <th>Comentário</th>
+  </tr>
+    
+<tbody>
+  <% @lamp.comments.each do |c| %>
+    <tr>
+      <td><%= c.autor %></td>
+      <td><%= c.comment %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
 
 <div class="row">
-    <strong>Descrição:</strong> <%= @lamp.description%> 
-</div>
-
-<div class="row">
-    <div class="col-md-3 col-md-offset-9">
-        <strong>Preço:</strong> $<%= @lamp.price %>
-    </div>
-</div>
-
-<div class="row">
-    <%= link_to 'Luminárias', lamps_path%>
+  <%= link_to 'Luminárias', lamps_path%>
 </div>

@@ -5,7 +5,6 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :last_name
       t.string :address
       t.string :phone_number
-      t.string :role
 
       t.timestamps
     end
