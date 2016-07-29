@@ -1,0 +1,18 @@
+<div>
+<% if user_signed_in? %>
+  <h2>Add a comment:</h2>
+  <%= form_for([@commentable, @commentable.comments.build]) do |f| %>
+    <p>
+      <%= f.hidden_field :autor, {value: current_user.first_name + " " + current_user.last_name} %><br>
+      <%= f.text_area :comment, :placeholder => "Comente aqui" %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+    <% end %>
+<% else %>
+  <h2>
+    Entre para comentar
+  </h2>
+<% end %>
+</div>

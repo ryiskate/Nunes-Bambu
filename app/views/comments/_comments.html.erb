@@ -1,0 +1,15 @@
+<table class="table table-hover">
+  <tr>
+    <th>Nome</th>
+    <th>Comentário</th>
+  </tr>
+    
+<tbody>
+  <% @commentable.comments.each do |c| %>
+    <tr>
+      <td><%= c.autor %></td>
+      <td><%= c.comment %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>

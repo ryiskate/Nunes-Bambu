@@ -8,6 +8,7 @@ class LampsController < ApplicationController
     
     def show
         @lamp = Lamp.find(params[:id])
+        @commentable = @lamp
     end
     
 #    def new

@@ -1,10 +1,9 @@
 class CommentsController < ApplicationController
+  before_filter :find_commentable
+  
   def create
-    @lamp = Lamp.find(params[:lamp_id])
-    @comment = @lamp.comments.create(comments_params)
-    @comment.autor = current_user.first_name
-    @comment.save
-    redirect_to lamp_path(@lamp)
+    @comment = @commentable.comments.create(comments_params)
+    redirect_to @commentable
   end
 
 private
@@ -12,4 +11,8 @@ private
     params.require(:comment).permit(:autor, :comment)
   end
   
+  def find_commentable
+    resource, id = request.path.split('/')[1,2]
+    @commentable = resource.singularize.classify.constantize.find(id)
+  end
 end
