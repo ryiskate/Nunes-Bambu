@@ -14,6 +14,11 @@ Rails.application.routes.draw do
      resources :comments
  end
  
+ #Kitchenwares routes
+ resources :kitchenwares do
+     resources :comments
+ end
+ 
  root 'home#index'
  
 end

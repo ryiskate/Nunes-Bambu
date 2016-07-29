@@ -3,13 +3,14 @@ class LampsController < ApplicationController
      before_action :require_admin, only: [:edit]
      
     def index
-        @lamp = Lamp.all
+        @thing = Lamp.all
     end
     
     def show
         @lamp = Lamp.find(params[:id])
         @commentable = @lamp
-    end
+        @item = @lamp
+        end
     
 #    def new
 #        @lamp = Lamp.new
