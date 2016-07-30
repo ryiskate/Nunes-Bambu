@@ -3,13 +3,24 @@
     <th>Nome</th>
     <th>Comentário</th>
   </tr>
-    
-<tbody>
-  <% @commentable.comments.each do |c| %>
-    <tr>
-      <td><%= c.autor %></td>
-      <td><%= c.comment %></td>
-    </tr>
-  <% end %>
-</tbody>
+      
+  <tbody>
+    <% @commentable.comments.each do |c| %>
+      <tr>
+        <td><strong><%= c.autor %></strong></td>
+        <td><%= c.comment %></td>
+        <td><%= link_to 'responder', c %></td>
+            
+            <% c.replies.each do |r| %>
+            <tr>
+            <div class="col-md-3 col-md-offset-2">
+              <td>Resposta de: <%= r.autor %></td>
+              <td>==> <%= r.reply %></td>
+            </div>
+            </tr> 
+            <% end %>
+        
+      </tr>
+    <% end %>
+  </tbody>
 </table>

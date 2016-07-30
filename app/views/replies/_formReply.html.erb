@@ -1,9 +1,9 @@
 <div>
 <% if user_signed_in? %>
-  <%= form_for([@commentable, @commentable.comments.build]) do |f| %>
+  <%= form_for([@replyable, @replyable.replies.build]) do |f| %>
     <p>
       <%= f.hidden_field :autor, {value: current_user.first_name + " " + current_user.last_name} %><br>
-      <%= f.text_area :comment, :placeholder => "Comente aqui" %>
+      <%= f.text_area :reply, :placeholder => "Responda aqui" %>
     </p>
     <p>
       <%= f.submit %>
@@ -11,7 +11,7 @@
     <% end %>
 <% else %>
   <h2>
-    Entre para comentar
+    Entre para responder
   </h2>
 <% end %>
 </div>

@@ -1,5 +1,12 @@
 class CommentsController < ApplicationController
+  #index, show, new, edit, create, update and destroy
   before_filter :find_commentable
+  
+   
+  def show
+    @comment = Comment.find(params[:id])   
+    @replyable = @comment
+  end
   
   def create
     @comment = @commentable.comments.create(comments_params)

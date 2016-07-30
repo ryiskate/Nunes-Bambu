@@ -1,0 +1,7 @@
+<h1><%= @comment.autor %></h1>
+<h2><%= @comment.comment %></h2>
+<%= render 'replies/formReply' %>
+
+<%= render 'replies/replies' %>
+
+<%= link_to 'voltar', @comment.parent %>

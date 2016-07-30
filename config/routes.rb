@@ -19,6 +19,14 @@ Rails.application.routes.draw do
      resources :comments
  end
  
+ #comments routes
+ resources :comments do
+   resources :replies
+ end
+ 
+ #replies routes
+ resources :replies
+ 
  root 'home#index'
  
 end

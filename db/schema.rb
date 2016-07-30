@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729155710) do
+ActiveRecord::Schema.define(version: 20160729182206) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -67,6 +67,16 @@ ActiveRecord::Schema.define(version: 20160729155710) do
     t.decimal  "price"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "replies", force: :cascade do |t|
+    t.string   "autor"
+    t.string   "reply"
+    t.string   "replyable_type"
+    t.integer  "replyable_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["replyable_type", "replyable_id"], name: "index_replies_on_replyable_type_and_replyable_id"
   end
 
   create_table "users", force: :cascade do |t|
