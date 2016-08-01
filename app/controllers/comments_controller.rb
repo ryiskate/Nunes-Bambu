@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
   def show
     @comment = Comment.find(params[:id])   
     @replyable = @comment
+    @item = @comment.commentable_type.constantize.find(@comment.commentable_id)
   end
   
   def create
