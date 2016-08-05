@@ -1,6 +1,6 @@
 class Kitchenware < ApplicationRecord
   
-  has_many :comments, as: :commentable, dependent:destroy
+  has_many :comments, as: :commentable, dependent: :destroy
   
   validates :name, presence: true
   validates :description, presence: true

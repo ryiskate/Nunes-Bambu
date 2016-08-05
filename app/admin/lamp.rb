@@ -8,7 +8,7 @@ ActiveAdmin.register Lamp do
 # or
 #
 permit_params do
-   permitted = [:name, :description, :price]
+   permitted = [:name, :description, :price, :image]
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
  end
