@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  autor: MyString
+  rate: 9.99
+  sumrate: 9.99
+  timesrate: 9.99
+
+two:
+  autor: MyString
+  rate: 9.99
+  sumrate: 9.99
+  timesrate: 9.99
