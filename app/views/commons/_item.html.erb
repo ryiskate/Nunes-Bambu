@@ -4,7 +4,11 @@
 
 <div class="row">
   <p>
-    foto
+   <% @item.images.each do |i| %>
+   <div class="col-md-4">
+   <%= image_tag i.img.url(:medium) %>
+   </div>
+   <% end %>
   </p>
 </div>
 

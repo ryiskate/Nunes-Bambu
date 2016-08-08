@@ -8,10 +8,23 @@ ActiveAdmin.register Kitchenware do
 # or
 
 permit_params do
-  permitted = [:name, :description, :price]
+  permitted = [:name, :description, :price, images_attributes: [:img, :id]]
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 end
 
+form do |f|
+  f.inputs do
+    input :name
+    input :description
+    input :price
+  end
+
+  f.has_many :images do |i|
+    i.input :img, as: :file
+  end
+
+  f.actions
+end
 
 end

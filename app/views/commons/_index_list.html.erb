@@ -6,7 +6,9 @@
         <strong><%= l.name %></strong>
     </div>
     <div class="row">
-        foto
+        <% im = l.images.first %>
+        
+        <%= image_tag im.img.url(:medium) %>
     </div>
     <div class="row">
         <strong>Preço: </strong>

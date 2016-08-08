@@ -10,7 +10,7 @@ class LampsController < ApplicationController
         @lamp = Lamp.find(params[:id])
         @commentable = @lamp
         @item = @lamp
-        end
+    end
     
 #    def new
 #        @lamp = Lamp.new

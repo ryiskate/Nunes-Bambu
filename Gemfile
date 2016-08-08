@@ -29,12 +29,13 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+gem 'activeadmin', '~> 1.0.0.pre4'
+
 
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'ransack',             github: 'activerecord-hackery/ransack'
 gem 'draper',              '> 3.x'
 gem 'sass-rails',          github: 'rails/sass-rails' # For Sprockets 4
-gem 'activeadmin', github: 'activeadmin'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
