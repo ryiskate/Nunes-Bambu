@@ -87,11 +87,12 @@ ActiveRecord::Schema.define(version: 20160808200001) do
 
   create_table "rates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "autor"
-    t.decimal  "rate",       precision: 10
-    t.decimal  "sumrate",    precision: 10
-    t.decimal  "timesrate",  precision: 10
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.decimal  "rate",          precision: 10
+    t.string   "rateable_type"
+    t.integer  "rateable_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_rates_on_rateable_type_and_rateable_id", using: :btree
   end
 
   create_table "replies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

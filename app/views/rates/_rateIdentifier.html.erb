@@ -1,0 +1,28 @@
+<div class="col-md-3">
+<% if @item.rates.present? %>
+  <% for i in 1..5 %>
+    <% if @item.rates.average(:rate) >= i-0.2 %>
+      <i class="fa fa-star fa-3", aria-hidden="true"></i>
+    <% elsif @item.rates.average(:rate) > i-0.7 %>
+      <i class="fa fa-star-half-o", aria-hidden="true"></i>
+    <% else %>
+      <i class="fa fa-star-o", aria-hidden="true"></i>
+    <% end %>
+  <% end %>
+<% else %>
+  <h3> 
+  <i class="fa fa-star-o", aria-hidden = "true"></i>
+  Sem qualificação
+  </h3>
+<% end %>
+</div>
+
+<div class="col-md-2">
+  <%= form_for([@item, @item.rates.build]) do |r| %>
+  <%= r.number_field :rate %>
+  <%= r.hidden_field :autor, { value: current_user.first_name  + " "  + current_user.last_name } %> 
+</div>
+<div class="col-md-2">
+  <%= r.submit %>
+  <% end %>
+</div>

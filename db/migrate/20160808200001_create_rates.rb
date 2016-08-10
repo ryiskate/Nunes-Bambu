@@ -3,8 +3,7 @@ class CreateRates < ActiveRecord::Migration[5.0]
     create_table :rates do |t|
       t.string :autor
       t.decimal :rate
-      t.decimal :sumrate
-      t.decimal :timesrate
+      t.references :rateable, polymorphic: true, index: true
 
       t.timestamps
     end

@@ -16,11 +16,13 @@ Rails.application.routes.draw do
  #lamps routes
  resources :lamps do
      resources :comments
+     resources :rates
  end
  
  #Kitchenwares routes
  resources :kitchenwares do
      resources :comments
+     resources :rates
  end
  
  #comments routes

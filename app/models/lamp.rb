@@ -2,7 +2,7 @@ class Lamp < ApplicationRecord
     
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :images, as: :imageable, dependent: :destroy
-  has_one :rate, as: :rateable, dependent: :destroy
+  has_many :rates, as: :rateable, dependent: :destroy
   
   accepts_nested_attributes_for :images, allow_destroy: true
   

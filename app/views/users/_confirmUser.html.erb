@@ -1,0 +1,10 @@
+<div>
+<% if user_signed_in? %>
+  <%= render 'rates/rateIdentifier' %>
+  <%= render 'comments/formComment' %>
+<% else %>
+  <h3>
+    Entre para comentar e qualificar o produto
+  </h3>
+<% end %>
+</div>

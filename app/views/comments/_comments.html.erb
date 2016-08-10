@@ -1,26 +1,27 @@
-<table class="table table-hover">
-  <tr>
-    <th>Nome</th>
-    <th>Comentário</th>
-  </tr>
-      
-  <tbody>
-    <% @commentable.comments.each do |c| %>
-      <tr>
-        <td><strong><%= c.autor %></strong></td>
-        <td><%= c.comment %></td>
-        <td><%= link_to 'responder', c %></td>
-            
-            <% c.replies.each do |r| %>
-            <tr>
-            <div class="col-md-3 col-md-offset-2">
-              <td>Resposta de: <%= r.autor %></td>
-              <td>==> <%= r.reply %></td>
-            </div>
-            </tr> 
-            <% end %>
+<% if @commentable.comments.first.present? %>
+  <table class="table table-hover">
+    
+    <tr>
+      <th>Nome</th>
+      <th>Comentário</th>
+    </tr>
         
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <tbody>
+      <% @commentable.comments.each do |c| %>
+        <tr>
+          <td><strong><%= c.autor %></strong></td>
+          <td><%= c.comment %></td>
+          <td><%= link_to 'responder', c %></td>
+              <% c.replies.each do |r| %>
+              <tr>
+              <div class="col-md-3 col-md-offset-2">
+                <td>Resposta de: <%= r.autor %></td>
+                <td>==> <%= r.reply %></td>
+              </div>
+              </tr> 
+              <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
