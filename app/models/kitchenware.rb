@@ -1,4 +1,5 @@
 class Kitchenware < ApplicationRecord
+  belongs_to :kitchenwareable, polymorphic: true
   
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :images, as: :imageable, dependent: :destroy

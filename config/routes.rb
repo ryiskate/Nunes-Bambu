@@ -11,7 +11,9 @@ Rails.application.routes.draw do
  get 'home/index'
  
  #users routes
- resources :users
+ resources :users do
+   resources :ordes
+ end
  
  #lamps routes
  resources :lamps do
@@ -33,6 +35,12 @@ Rails.application.routes.draw do
  #replies routes
  resources :replies
  
+ #orders routes
+ resources :ordes do
+   resources :lamps
+   resources :kitchenwares
+ end
+
  root 'home#index'
  
 end

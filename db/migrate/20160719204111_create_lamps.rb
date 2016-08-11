@@ -4,7 +4,8 @@ class CreateLamps < ActiveRecord::Migration[5.0]
       t.string :name
       t.text :description
       t.decimal :price
-
+      t.references :lampable, polymorphic: true, index: true
+      
       t.timestamps
     end
   end

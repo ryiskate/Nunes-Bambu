@@ -1,4 +1,6 @@
 class Lamp < ApplicationRecord
+  
+  belongs_to :lampable, polymorphic: true
     
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :images, as: :imageable, dependent: :destroy
