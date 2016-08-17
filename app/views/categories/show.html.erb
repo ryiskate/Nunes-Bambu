@@ -1,0 +1,21 @@
+<ul>
+
+<% @products.each do |p|%>
+
+<li class="col-md-4 col-xs-6">
+    
+    <h2><%= p.name %></h2>
+    <div>
+      <% im = p.images.first %>
+      <%= image_tag im.img.url(:medium) unless im.nil? %>
+    </div>
+    <div>
+        <strong>Preço: </strong><%= p.price %>
+    </div>
+    <%= link_to 'detalhes', p %>
+    
+</li>
+
+<% end %>
+
+</ul>

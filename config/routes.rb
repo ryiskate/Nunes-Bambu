@@ -1,42 +1,18 @@
 Rails.application.routes.draw do
 
-  get 'rates/new'
-
-  get 'rates/update'
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get 'home/index'
- 
-  #users routes
 
-  resources :orders do
-    collection do
-      post 'add_item_to_cart', to: 'orders#add_item_to_cart', as: 'add_to_cart'
-    end
-  end
+  resources :orders
+  
+  resources :products
+  
+  resources :categories
  
- #lamps routes
- resources :lamps do
-     resources :comments
-     resources :rates
- end
- 
- #Kitchenwares routes
- resources :kitchenwares do
-     resources :comments
-     resources :rates
- end
- 
- #comments routes
- resources :comments do
-   resources :replies
- end
- 
- #replies routes
- resources :replies
+  #comments routes
+  resources :comments
  
  root 'home#index'
  
