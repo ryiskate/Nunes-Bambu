@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810221003) do
+ActiveRecord::Schema.define(version: 20160816224035) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "namespace"
@@ -44,77 +44,51 @@ ActiveRecord::Schema.define(version: 20160810221003) do
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "autor"
     t.string   "comment"
-    t.string   "commentable_type"
-    t.integer  "commentable_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "imageable_type"
-    t.integer  "imageable_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "img_file_name"
     t.string   "img_content_type"
     t.integer  "img_file_size"
     t.datetime "img_updated_at"
-    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id", using: :btree
   end
 
-  create_table "kitchenwares", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.text     "description",        limit: 65535
-    t.decimal  "price",                            precision: 10
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+  create_table "order_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.decimal  "value",      precision: 10
+    t.integer  "product_id"
+    t.integer  "quantity"
+    t.integer  "order_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id", using: :btree
+    t.index ["product_id"], name: "index_order_items_on_product_id", using: :btree
   end
 
-  create_table "lamps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.float    "total_value", limit: 24
+    t.string   "status"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "user_id"
+  end
+
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.text     "description", limit: 65535
     t.decimal  "price",                     precision: 10
+    t.text     "description", limit: 65535
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
   end
 
-  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "owner"
-    t.integer  "number"
-    t.float    "valor",         limit: 24
-    t.string   "status"
-    t.string   "ordeable_type"
-    t.integer  "ordeable_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.index ["ordeable_type", "ordeable_id"], name: "index_orders_on_ordeable_type_and_ordeable_id", using: :btree
-  end
-
   create_table "rates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "autor"
-    t.decimal  "rate",          precision: 10
-    t.string   "rateable_type"
-    t.integer  "rateable_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.index ["rateable_type", "rateable_id"], name: "index_rates_on_rateable_type_and_rateable_id", using: :btree
-  end
-
-  create_table "replies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "autor"
-    t.string   "reply"
-    t.string   "replyable_type"
-    t.integer  "replyable_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["replyable_type", "replyable_id"], name: "index_replies_on_replyable_type_and_replyable_id", using: :btree
+    t.decimal  "rate",       precision: 10
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -138,4 +112,6 @@ ActiveRecord::Schema.define(version: 20160810221003) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
 end

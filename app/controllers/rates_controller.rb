@@ -12,7 +12,7 @@ class RatesController < ApplicationController
   
 private
   
-def rates_params
+  def rates_params
     params.require(:rate).permit(:autor, :rate)
   end
   

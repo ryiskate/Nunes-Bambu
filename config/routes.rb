@@ -8,12 +8,15 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
- get 'home/index'
+  get 'home/index'
  
- #users routes
- resources :users do
-   resources :ordes
- end
+  #users routes
+
+  resources :orders do
+    collection do
+      post 'add_item_to_cart', to: 'orders#add_item_to_cart', as: 'add_to_cart'
+    end
+  end
  
  #lamps routes
  resources :lamps do
@@ -35,12 +38,6 @@ Rails.application.routes.draw do
  #replies routes
  resources :replies
  
- #orders routes
- resources :ordes do
-   resources :lamps
-   resources :kitchenwares
- end
-
  root 'home#index'
  
 end
