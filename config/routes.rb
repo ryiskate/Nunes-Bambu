@@ -12,7 +12,14 @@ Rails.application.routes.draw do
   resources :categories
  
   #comments routes
-  resources :comments
+  resources :comments do
+    collection do
+      get 'for_product/:product_id', to: 'comments#for_product'
+    end
+  end
+  
+  
+  resources :rates
  
  root 'home#index'
  

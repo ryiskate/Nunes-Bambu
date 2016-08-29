@@ -1,28 +1,30 @@
-<div class="col-md-3">
-<% if @item.rates.present? %>
-  <% for i in 1..5 %>
-    <% if @item.rates.average(:rate) >= i-0.2 %>
-      <i class="fa fa-star fa-3", aria-hidden="true"></i>
-    <% elsif @item.rates.average(:rate) > i-0.7 %>
-      <i class="fa fa-star-half-o", aria-hidden="true"></i>
+<div class="row">
+  <div class="col-md-3">
+    <% if @product.rates.present? %>
+      <div class="star-conteiner">
+        <% for i in 1..5 %>
+          <% if @product.rate_average >= i-0.2 %>
+            <i class="fa fa-star fa-3", aria-hidden="true"></i>
+          <% elsif @product.rate_average > i-0.7 %>
+            <i class="fa fa-star-half-o", aria-hidden="true"></i>
+          <% else %>
+            <i class="fa fa-star-o", aria-hidden="true"></i>
+          <% end %>
+        <% end %>
+      </div>
     <% else %>
-      <i class="fa fa-star-o", aria-hidden="true"></i>
+      <h3> 
+        <i class="fa fa-star-o", aria-hidden = "true"></i>
+        Sem qualificação
+      </h3>
     <% end %>
-  <% end %>
-<% else %>
-  <h3> 
-  <i class="fa fa-star-o", aria-hidden = "true"></i>
-  Sem qualificação
-  </h3>
-<% end %>
-</div>
-
-<div class="col-md-2">
-  <%= form_for([@item, @item.rates.build]) do |r| %>
-  <%= r.number_field :rate %>
-  <%= r.hidden_field :autor, { value: current_user.first_name  + " "  + current_user.last_name } %> 
-</div>
-<div class="col-md-2">
-  <%= r.submit %>
-  <% end %>
+  </div>
+  
+  <div class="col-md-6">
+    <%= form_for(Rate.new, :html => {class:  'form-inline rate-form'}) do |r| %>
+    <%= r.number_field :rate %>
+    <%= r.hidden_field :product_id, { value: @product.id } %> 
+    <%= r.submit %>
+    <% end %>
+  </div>
 </div>

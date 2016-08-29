@@ -1,10 +1,12 @@
 class RatesController < ApplicationController
-  
-  before_filter :find_commentable
-  
+
   def create
-    @rate = @rateable.rates.create(rates_params)
-    redirect_to @rateable
+    rate = Rate.new
+    rate.rate = params[:rate][:rate]
+    rate.product_id = params[:rate][:product_id]
+    rate.save
+    
+    render :json => Product.find(rate.product_id).rate_average
   end
 
   def update

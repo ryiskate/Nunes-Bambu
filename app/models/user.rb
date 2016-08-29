@@ -5,8 +5,14 @@ class User < ApplicationRecord
            :recoverable, :rememberable, :trackable, :validatable
            
     has_many :orders
+    has_many :comments
     
     validates :first_name, presence: true,
                            length: {minimum: 5}
-                           
+    
+    def get_cart
+      order = orders.where( status: 'cart' ).first
+      order.nil? ? Order.new(status: 'cart') : order
+    end
+       
 end

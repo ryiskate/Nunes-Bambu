@@ -1,26 +1,23 @@
 class CommentsController < ApplicationController
   #index, show, new, edit, create, update and destroy
-  before_filter :find_commentable
-  
    
-  def show
-    @comment = Comment.find(params[:id])   
-    @replyable = @comment
-    @item = @comment.commentable_type.constantize.find(@comment.commentable_id)
+  def for_product
+   @comments = Comment.for_product(params[:product_id])
+   
+   render :json => @comments.map{ |c| c.to_json }
   end
   
   def create
-    @comment = @commentable.comments.create(comments_params)
-    redirect_to @commentable
+    comment = Comment.new(comments_params)
+    comment.user = current_user
+    comment.save
+    
+    render :json => comment.to_json
   end
 
 private
   def comments_params
-    params.require(:comment).permit(:autor, :comment)
+    params.require(:comment).permit(:comment, :product_id)
   end
   
-  def find_commentable
-    resource, id = request.path.split('/')[1,2]
-    @commentable = resource.singularize.classify.constantize.find(id)
-  end
 end
