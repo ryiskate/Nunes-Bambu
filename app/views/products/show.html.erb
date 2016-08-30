@@ -26,7 +26,16 @@
 
 <div class="row">
   <div class="col-md-3 col-md-offset-9">
-    <strong>Preço:</strong> $<%= @product.price %>
+    <div class="row">
+      <strong>Preço:</strong> $<%= @product.price %>
+    </div>
+    <div class="row">
+      <%= form_for :orders, url: add_item_to_cart_orders_path do |f| %>
+        <%= f.hidden_field :product_id, { value: @product.id } %>
+        <%= f.number_field :quantity, { value: 1 } %>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+      <% end %>
+    </div>
   </div>
 </div>
 <h3>COmentarios</h3>

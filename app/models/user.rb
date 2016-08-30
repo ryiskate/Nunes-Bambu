@@ -11,8 +11,8 @@ class User < ApplicationRecord
                            length: {minimum: 5}
     
     def get_cart
-      order = orders.where( status: 'cart' ).first
-      order.nil? ? Order.new(status: 'cart') : order
+      order = self.orders.where( status: 'cart' ).first
+      order.nil? ? self.orders.new( status: 'cart' ) : order
     end
        
 end

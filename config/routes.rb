@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :orders
+  scope 'orders' do
+    post 'add_item_to_cart', to: 'orders#add_item_to_cart'
+    get 'cart', to: 'orders#cart'
+  end
   
   resources :products
   
