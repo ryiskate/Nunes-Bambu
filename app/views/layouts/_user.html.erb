@@ -1,0 +1,18 @@
+<ul class="nav navbar-nav navbar-right">
+  <% if user_signed_in? %> 
+    <ul> 
+      <li><%= current_user.email %></li> 
+      <li><%= link_to "Sair", destroy_user_session_path, :method => :delete %></li> 
+    </ul> 
+  <% else %> 
+    <ul> 
+      <li><%= link_to "Entrar", '/users/sign_in' %></a></li> 
+      <li><%= link_to "Cadastrar", '/users/sign_up' %></a></li> 
+    </ul> 
+  <% end %>
+</ul>
+<% if user_signed_in? %>
+  <ul class="nav navbar-nav navbar-right">
+    <li><a href="/orders/cart" class="show-cart">Meu carrinho</a></li>
+  </ul>
+<% end %>

@@ -1,0 +1,7 @@
+<div class="row">
+  <%= form_for :orders, url: add_item_to_cart_path, :html => {class: 'add-to-cart-form'} do |f| %>
+    <%= f.hidden_field :product_id, { value: @product.id } %>
+    <%= f.number_field :quantity, { value: 1 } %>
+    <button type="submit" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+  <% end %>
+</div>

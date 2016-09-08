@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-2">
+      <ul class="nav nav-pills nav-stacked">
+        <% Category.all.each do |c| %>
+          <li>
+            <%= link_to c.name, category_path(c) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-md-10">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      
+      <%= yield %>
+      
+    </div>
+  </div>
+</div>  
+    

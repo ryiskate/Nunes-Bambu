@@ -1,0 +1,29 @@
+.navbar {
+  margin-bottom: 0;  
+}
+
+.cart-container {
+  margin-bottom: 20px; 
+  position: relative;
+}
+
+.minicart {
+  width: 300px;
+  border: 1px solid #ccc;
+  right: 0;
+  top: 0;
+  position: absolute;
+  background-color: #eee;
+  z-index: 999;
+  padding: 10px;
+}
+
+.total-value {
+  text-align: right;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.go-to-cart {
+  text-align: right;  
+}

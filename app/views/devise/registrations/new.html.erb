@@ -1,6 +1,6 @@
 <h2>Sign up</h2>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, url: '/users' do |f| %>
   <%= devise_error_messages! %>
   
   <div class="field"><%= f.text_field :first_name, autofocus: true, :placeholder => "Nome" %></div>

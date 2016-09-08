@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   scope 'orders' do
     post 'add_item_to_cart', to: 'orders#add_item_to_cart'
     get 'cart', to: 'orders#cart'
+    get 'minicart', to: 'orders#minicart'
+    post 'checkout', to: 'orders#checkout'
   end
   
   resources :products

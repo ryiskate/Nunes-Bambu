@@ -10,4 +10,9 @@ class Product < ApplicationRecord
     rates.average(:rate)
   end
   
+  def main_image(image_format = :medium)
+    return 'http://placekitten.com/50/50' if images.empty?
+    images.first.img.url(image_format)
+  end
+  
 end

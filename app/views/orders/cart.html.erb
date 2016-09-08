@@ -1,20 +1,6 @@
-<table class="table table-condensed table-hover">
-  <tr>
-    <th>Produto</th>
-    <th>Valor</th>
-    <th>Quantidade</th>
-  </tr>
-  <tbody>
-    <% @order.order_items.each do |i| %>
-    <th><%= Product.find(i.product_id).name %></th>
-    <th><%= i.value %></th>
-    <th><%= i.quantity %></th>
-    <% end %>
-  </tbody>
-  <tfoot>
-    <th></th>
-    <th>Valor total</th>
-    <th><%= @order.total_value %></th>
-  </tfoot>
-</table>
-    
+<% if @order.present? %>
+    <%= render 'cart_list' %>
+    <%= render 'checkout_form' %>
+<% else %>
+  <h2>Seu carrinho esta vazio</h2>
+<% end %>

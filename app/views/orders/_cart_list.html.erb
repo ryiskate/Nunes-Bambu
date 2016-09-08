@@ -1,0 +1,21 @@
+<table class="table table-condensed table-hover">
+  <tr>
+    <th>Produto</th>
+    <th>Valor</th>
+    <th>Quantidade</th>
+  </tr>
+  <tbody>
+    <% @order.order_items.each do |i| %>
+      <tr>
+        <th><%= i.product.name %></th>
+        <th><%= i.value %></th>
+        <th><%= i.quantity %></th>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <th></th>
+    <th>Valor total</th>
+    <th><%= @order.total_value %></th>
+  </tfoot>
+</table>
