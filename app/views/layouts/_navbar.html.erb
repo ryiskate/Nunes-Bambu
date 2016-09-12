@@ -15,18 +15,17 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#"> Luminárias <span class="sr-only">(current)</span></a></li>
-        <li><a href="#"> Utensílios de cozinha </a></li>
+        <li><a href= "/categories/1"> Luminárias </a></li>
+        <li><a href="/categories/2"> Utensílios de cozinha </a></li>
         <li><a href="#"> Brindes para empresas </a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Categorias <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#"> Móveis / Móveis sob medida</a></li>
-            <li><a href="#"> Construção </a></li>
-            <li><a href="#"> Matéria prima </a></li>
-            <li><a href="#"> Revestimentos </a></li>
-            <li><a href="#"> Locação de móveis </a></li>
-            <li><a href="#"> Decoração </a></li>
+            <% Category.all.each do |c| %>
+              <li>
+                <%= link_to c.name, category_path(c) %>
+              </li>
+            <% end %>
             <li role="separator" class="divider"></li>
             <li><a href="#"> Cursos </a></li>
           </ul>
