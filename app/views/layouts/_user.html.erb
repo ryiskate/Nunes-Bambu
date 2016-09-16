@@ -1,7 +1,7 @@
 <ul class="nav navbar-nav navbar-right">
   <% if user_signed_in? %> 
     <ul> 
-      <li><%= current_user.email %></li> 
+      <li><a href="/user"><%= current_user.email %></a></li> 
       <li><%= link_to "Sair", destroy_user_session_path, :method => :delete %></li> 
     </ul> 
   <% else %> 

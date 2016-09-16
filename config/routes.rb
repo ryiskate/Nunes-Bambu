@@ -2,9 +2,10 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users, :controllers => { :registrations => "user_registration" }
-  
+  devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get 'orders/:id', to: 'orders#show'
 
   scope 'orders' do
     post 'add_item_to_cart', to: 'orders#add_item_to_cart'
@@ -12,6 +13,8 @@ Rails.application.routes.draw do
     get 'minicart', to: 'orders#minicart'
     post 'checkout', to: 'orders#checkout'
   end
+  
+  get 'user', to: 'users#show'
   
   resources :products
   

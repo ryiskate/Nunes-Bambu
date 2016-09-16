@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
     #index, show, new, edit, create, update and destroy
 
-#    def new
-#        @user = User.new
-#    end
+    def show
+        @user = current_user
+    end
     
 #    def create
 #        @user = User.new(user_params)

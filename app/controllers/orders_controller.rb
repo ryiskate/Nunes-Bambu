@@ -1,5 +1,9 @@
 class OrdersController < ApplicationController
   
+  def show
+    @order = Order.find(params[:id])
+  end
+  
   def cart
     @order = current_user.orders.find_by_status('cart')
   end
