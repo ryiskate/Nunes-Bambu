@@ -1,10 +1,11 @@
-$(function(){
+$(function() {
   $(".rate-form").submit(function(e){
     e.preventDefault();
     var data = $(this).serializeArray();
     $.post("/rates.json", data)
-      .done(function(data){
-        paintStars(data);
+      .done(function(data) {
+        createStars();
+        paintStars(data)
         $(`.rate-form`).find('input[type="submit"]').prop('disabled', false);
       })
       .fail(function(){
@@ -12,8 +13,16 @@ $(function(){
       });
   });
   
+  function createStars() {
+    star_container = $('.star-conteiner');
+    star_container.empty();
+    for(var i = 0; i < 5; i++) {
+      star_container.append('<i class="fa fa-star-o", aria-hidden="true"></i>');
+    }
+  }
+  
   function paintStars(value){
-    var stars = $(".star-conteiner i");
+    var stars = $('.star-conteiner i');
     stars.removeClass("fa-star fa-3 fa-star-half-o fa-star-o");
     $.each(stars, function(i, star){
       if (value >= i+1-0.2){
