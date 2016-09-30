@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+  
+  enum status: [ :cart, :payment, :making, :delivering, :delivered ]
 
   before_save :update_total_value
   
@@ -16,4 +18,13 @@ class Order < ApplicationRecord
     self.order_items << order_item
     order_item
   end
+  
+  def status_to_human
+    I18n.t("activerecord.attributes.order.status.#{status}")
+  end
+  
+  def created_at_to_human
+    created_at.strftime("%d/%m/%Y")
+  end
+  
 end

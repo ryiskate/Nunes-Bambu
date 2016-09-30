@@ -2,16 +2,15 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "user_registration"}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-  get 'orders/:id', to: 'orders#show'
 
   scope 'orders' do
     post 'add_item_to_cart', to: 'orders#add_item_to_cart'
     get 'cart', to: 'orders#cart'
     get 'minicart', to: 'orders#minicart'
     post 'checkout', to: 'orders#checkout'
+    get ':id', to: 'orders#show'
   end
   
   get 'user', to: 'users#show'

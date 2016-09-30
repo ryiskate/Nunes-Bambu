@@ -1,4 +1,7 @@
 <div class="minicart">
+  <div class="close-button" align="right">
+    <a href="#" class="fa fa-times" id="close" aria-hidden="true"></a>
+  </div>
   <div class="product-list">
     <% @order.order_items.each do |item| %>
       <div class="row">

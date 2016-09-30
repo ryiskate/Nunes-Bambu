@@ -12,8 +12,6 @@ class OrdersController < ApplicationController
     order = current_user.get_cart
     order.add_item(params[:orders][:product_id], params[:orders][:quantity])
     order.save
-    
-    redirect_to product_path(params[:orders][:product_id])
   end
   
   def minicart
@@ -23,8 +21,9 @@ class OrdersController < ApplicationController
   
   def checkout
     order = current_user.orders.find_by_status('cart')
-    order.status = 'payment'
+    order.payment!
     order.save
+    OrderMailer.processing(order.user, order).deliver_now
   end
   
 private

@@ -7,8 +7,7 @@ class User < ApplicationRecord
     has_many :orders
     has_many :comments
     
-    validates :first_name, presence: true,
-                           length: {minimum: 5}
+    validates :first_name, presence: true
     
     def get_cart
       order = self.orders.where( status: 'cart' ).first
