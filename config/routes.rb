@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get 'minicart', to: 'orders#minicart'
     post 'checkout', to: 'orders#checkout'
     get ':id', to: 'orders#show'
+    get 'checkout_completed', to: 'orders#checkoutCompleted'
   end
   
   get 'user', to: 'users#show'

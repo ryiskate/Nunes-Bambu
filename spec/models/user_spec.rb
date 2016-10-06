@@ -22,7 +22,7 @@ RSpec.describe User, type: :model do
     end
     
     context 'with other than cart status' do
-      let(:status) {'pending'}
+      let(:status) {'payment'}
       it { expect(user.get_cart.persisted?).to be_falsey }
       it { expect(user.get_cart.status).to eq('cart') }
     end

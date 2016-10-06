@@ -11,6 +11,9 @@
       <th>
         Status
       </th>
+       <th>
+        Status
+      </th>
     </thead>
     <tbody>
       <% @user.orders.each do |order| %>
@@ -18,7 +21,8 @@
           <tr>
             <td><a href="/orders/<%= order.id %>"><%= order.id %></a></td>
             <td><%= order.created_at_to_human %></td>
-            <td><%= order.status_to_human %></td>
+            <td><%= order.status_to_user %></td>
+            <td><%= order.track_number %></td>
           </tr>
         <% end %>
       <% end %>

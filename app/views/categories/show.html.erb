@@ -1,21 +1,21 @@
-<ul>
-
-<% @products.each do |p|%>
-
-<li class="col-md-4 col-xs-6">
+<div class="products">
+  <ul class="list">
     
-    <h2><%= p.name %></h2>
-    <div>
-      <% im = p.images.first %>
-      <%= image_tag im.img.url(:medium) unless im.nil? %>
-    </div>
-    <div>
-        <strong>Preço: </strong><%= p.price %>
-    </div>
-    <%= link_to 'detalhes', p %>
+    <% @products.each do |p|%>
     
-</li>
-
-<% end %>
-
-</ul>
+      <li class="col-md-4 col-xs-6">
+        <div class="item">
+          <div class="image">
+            <% list_image = p.images.first %>
+            <%= link_to image_tag(list_image.nil? ? 'http://placekitten.com/285/300' : list_image.img.url(:medium)), p %>
+          </div>
+          <p class="name"><%= p.name %></p>
+          <h2 class="price">
+              <strong><%= number_to_currency(p.price) %></strong>
+          </h2>
+          <div class="detail-link"><%= link_to 'detalhes', p %></div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

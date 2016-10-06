@@ -1,3 +1,29 @@
 // Place all the styles related to the Categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.products {
+  .list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .name {
+    margin: 5px 0;
+  }
+  
+  .price {
+    margin: 5px 0;
+    color: #ff0000;
+  }
+  
+  .detail-link {
+    text-align: right;
+  }
+}

@@ -20,10 +20,15 @@ class OrdersController < ApplicationController
   end
   
   def checkout
-    order = current_user.orders.find_by_status('cart')
-    order.payment!
-    order.save
-    OrderMailer.processing(order.user, order).deliver_now
+    @order = current_user.orders.find_by_status('cart')
+    @order.payment!
+    @order.save
+    OrderMailer.payment(@order).deliver_later
+    redirect_to checkout_completed_path
+  end
+  
+  def checkout_completed
+    @order = current_user.orders.last
   end
   
 private

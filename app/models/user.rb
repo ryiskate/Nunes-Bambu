@@ -13,5 +13,9 @@ class User < ApplicationRecord
       order = self.orders.where( status: 'cart' ).first
       order.nil? ? self.orders.new( status: 'cart' ) : order
     end
+    
+    def full_name
+      "#{first_name} #{last_name}"
+    end
        
 end

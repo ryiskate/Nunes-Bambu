@@ -1,4 +1,13 @@
 pt-BR:
+  labels:
+    all_orders: 'Todos os pedidos'
+    making: 'Em produção'
+    to_deliver: 'Prontos para enviar'
+    waiting_payment: 'Confirmação de pagamento'
+  attributes:
+    name: 'Nome'
+    created_at: 'Criado em'
+    updated_at: 'Atualizado em'
   activerecord:
     errors:
       messages:
@@ -10,6 +19,19 @@ pt-BR:
       user: 
         one: 'Usuário'
         other: 'Usuários'
+      order:
+        one: 'Pedido'
+        other: 'Pedidos'
+      comment:
+        one: 'Comentário'
+        other: 'Comentários'
+      product:
+        one: 'Produto'
+        other: 'Produtos'
+      category:
+        one: 'Categoria'
+        other: 'Categorias'
+      makings: 'Em produção'
     attributes:
       user:
         first_name: 'Nome'
@@ -17,11 +39,13 @@ pt-BR:
         password_confirmation: "Confirmação da senha"
       order:
         status:
-          cart: 'carrinho'
-          payment: 'aguardando pagamento'
-          making: 'confeccionando'
-          delivering: 'entregando'
-          delivered: 'entregue'
+          one: 'Status'
+          cart: 'Carrinho'
+          payment: 'Aguardando pagamento'
+          making: 'Confeccionando'
+          to_deliver: 'Pronto para entregar'
+          delivering: 'Entregando'
+          delivered: 'Entregue'
   date:
     abbr_day_names:
     - Dom

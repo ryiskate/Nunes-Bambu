@@ -1,11 +1,15 @@
 class Order < ApplicationRecord
   
-  enum status: [ :cart, :payment, :making, :delivering, :delivered ]
+  enum status: [ :cart, :payment, :making, :to_deliver, :delivering, :delivered ]
 
   before_save :update_total_value
   
   belongs_to :user
   has_many :order_items
+  
+  scope :waiting_payment, -> { where(status: 'payment') }
+  scope :making, -> { where(status: 'making') }
+  scope :to_deliver, -> { where(status: 'to_deliver') }
   
   def update_total_value
     self.order_items.each { |i| i.value = i.product.price }
@@ -25,6 +29,15 @@ class Order < ApplicationRecord
   
   def created_at_to_human
     created_at.strftime("%d/%m/%Y")
+  end
+  
+  def user_name
+    user.full_name
+  end
+  
+  def status_to_user
+    return I18n.t("activerecord.attributes.order.status.making") if status == 'to_deliver'
+    I18n.t("activerecord.attributes.order.status.#{status}")
   end
   
 end

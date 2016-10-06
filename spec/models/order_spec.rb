@@ -28,5 +28,23 @@ RSpec.describe Order, type: :model do
     it { expect(item.quantity).to eq(5) }
     it { expect(item.value).to eq(10.25) }
   end
+  
+  describe '#status_for_user' do
+    let(:oder) { build(:order) }
+    context 'when status is to_deliver' do
+      before { order.to_deliver! }
+      it { expect(order.status_to_user).to eq('Confeccionando') }
+    end
+    
+    context 'when status is making' do
+      before { order.making! }
+      it { expect(order.status_to_user).to eq('Confeccionando') }
+    end
+    
+    context 'when status is to_deliver' do
+      before { order.payment! }
+      it { expect(order.status_to_user).to eq('Aguardando pagamento') }
+    end
+  end
     
 end
