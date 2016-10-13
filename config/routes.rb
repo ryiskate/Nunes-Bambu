@@ -10,8 +10,8 @@ Rails.application.routes.draw do
     get 'cart', to: 'orders#cart'
     get 'minicart', to: 'orders#minicart'
     post 'checkout', to: 'orders#checkout'
+    get 'checkout_completed', to: 'orders#checkout_completed'
     get ':id', to: 'orders#show'
-    get 'checkout_completed', to: 'orders#checkoutCompleted'
   end
   
   get 'user', to: 'users#show'

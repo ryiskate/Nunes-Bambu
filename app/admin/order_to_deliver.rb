@@ -1,33 +1,32 @@
 ActiveAdmin.register Order, as:"To Deliver" do
   
-  permit_params do
-   permitted = [:order]
-  end
+  permit_params :track_number
   
   actions :index
-  #index title: I18n.t('labels.to_deliver')
+  config.batch_actions = false
   menu label: I18n.t('labels.to_deliver'), parent: "Pedidos"
   
   scope :to_deliver, default: true
   
-  index do
+  index title: I18n.t('labels.to_deliver') do
+    selectable_column
     id_column
     column :user_name
     column :total_value
     column :created_at
-    column do |order|
+    column :track_number do |order|
       form_for :order, url: ready_to_deliver_admin_to_deliver_path(order) do |f|
-        f.input :track_number
+        f.text_field :track_number
         f.submit
       end
     end
   end
   
-  member_action :ready_to_deliver do
+  member_action :ready_to_deliver, method: :post do
+    resource.track_number = params[:order][:track_number]
+    OrderMailer.delivering(resource).deliver_now
     resource.delivering!
-    byebug
-    resource.track_number = params[:order[:track_number]]
-    OrderMailer.delivering(resource).deliver_later
+    flash[:notice] = "Pedido alterado com sucesso!"
     redirect_to admin_to_delivers_path
   end
   

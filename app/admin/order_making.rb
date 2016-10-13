@@ -5,12 +5,12 @@ ActiveAdmin.register Order, as:"Making" do
   end
   
   actions :index
-  #index title: I18n.t('labels.making')
+  
   menu label: I18n.t('labels.making'), parent: "Pedidos"
   
   scope :making, default: true
   
-  index do
+  index title: I18n.t('labels.making') do
     id_column
     column :user_name
     column :total_value

@@ -1,6 +1,7 @@
 <table class="table table-condensed table-hover">
   <tr>
     <th>Produto</th>
+    <th>Imagem</th>
     <th>Valor</th>
     <th>Quantidade</th>
   </tr>
@@ -8,12 +9,14 @@
     <% @order.order_items.each do |i| %>
       <tr>
         <th><%= i.product.name %></th>
+        <th><%= image_tag i.product.main_image(:thumb) %></th>
         <th><%= i.value %></th>
         <th><%= i.quantity %></th>
       </tr>
     <% end %>
   </tbody>
   <tfoot>
+    <th></th>
     <th></th>
     <th>Valor total</th>
     <th><%= @order.total_value %></th>

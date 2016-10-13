@@ -5,12 +5,12 @@ ActiveAdmin.register Order, as:"Payment Confirmation" do
   end
   
   actions :index
-  #index title: I18n.t('labels.waiting_payment')
+  
   menu label: I18n.t('labels.waiting_payment'), parent: "Pedidos"
   
   scope :waiting_payment, default: true
   
-  index do
+  index title: I18n.t('labels.waiting_payment') do
     id_column
     column :user_name
     column :total_value
