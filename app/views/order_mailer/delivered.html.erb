@@ -1,1 +1,7 @@
-<h2>Seu pedido esta sendo processado, entraremos em contato com voce em breve, obrigado</h2>
+<h2> <%= @order.user.first_name %> recebemos a confirmação da entrega do seu pedido número <%= @order.id %></h2>
+<h3>
+  O seu pedido contém os seguintes itens: <br />
+  <% @order.order_items.each do |i| %>
+    <%= i.quantity %> <%= i.product.name.pluralize(i.quantity) %> <br />
+  <% end %>
+</h3>

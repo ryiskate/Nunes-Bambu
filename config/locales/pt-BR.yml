@@ -4,6 +4,7 @@ pt-BR:
     making: 'Em produção'
     to_deliver: 'Prontos para enviar'
     waiting_payment: 'Confirmação de pagamento'
+    delivered: 'Entregue'
   attributes:
     name: 'Nome'
     created_at: 'Criado em'

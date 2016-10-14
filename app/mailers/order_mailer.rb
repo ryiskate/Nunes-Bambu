@@ -16,7 +16,8 @@ class OrderMailer < ApplicationMailer
   end
   
   def delivered(order)
-    mail(to: order.user.email, subject: 'Seu pedido foi entregue ' + order.user.first_name)
+    @order = order
+    mail(to: order.user.email, subject: "#{order.user.first_name} seu pedido número #{order.id} foi entregue")
   end
   
 end

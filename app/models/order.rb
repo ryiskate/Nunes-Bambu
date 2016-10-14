@@ -10,6 +10,7 @@ class Order < ApplicationRecord
   scope :waiting_payment, -> { where(status: 'payment') }
   scope :making, -> { where(status: 'making') }
   scope :to_deliver, -> { where(status: 'to_deliver') }
+  scope :delivered, -> { where(status: 'delivering') }
   
   def update_total_value
     self.order_items.each { |i| i.value = i.product.price }
