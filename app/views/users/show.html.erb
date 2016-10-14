@@ -8,4 +8,6 @@
   Email = <%= @user.email %><br>
 </div>
 
+<%= link_to 'Atualizar dados', edit_user_registration_path(current_user) %>
+
 <%= render 'order_list' %> 

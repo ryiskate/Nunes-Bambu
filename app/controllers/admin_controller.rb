@@ -3,8 +3,5 @@ class AdminController < ApplicationController
     
     def index
     end
-    
-    def lamps
-        @lamp = Lamp.all
-    end
+
 end

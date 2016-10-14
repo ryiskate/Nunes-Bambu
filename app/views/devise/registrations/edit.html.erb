@@ -1,11 +1,31 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Atualizar dados <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :Nome %><br />
+    <%= f.text_field :first_name, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :Sobrenome %><br />
+    <%= f.text_field :last_name, autofocus: true %>
+  </div>
+  
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :Endereço %><br />
+    <%= f.text_field :address, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :Telefone %><br />
+    <%= f.telephone_field :phone_number, autofocus: true %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
