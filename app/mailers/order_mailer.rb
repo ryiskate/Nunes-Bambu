@@ -6,6 +6,7 @@ class OrderMailer < ApplicationMailer
   end
   
   def making(order)
+    @order = order
     mail(to: order.user.email, subject: "#{order.user.first_name} confirmamos o pagamento do seu pedido numero #{order.id}")
   end
   
