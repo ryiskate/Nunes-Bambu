@@ -1,6 +1,7 @@
 class OrderMailer < ApplicationMailer
   
   def payment(order)
+    @order = order
     mail(to: order.user.email, subject: "#{order.user.first_name} recebemos seu pedido numero #{order.id}")
   end
   

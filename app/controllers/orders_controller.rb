@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
   def checkout
     @order = current_user.orders.find_by_status('cart')
     @order.payment!
+    @order.address = params[:order][:address]
     @order.save
     OrderMailer.payment(@order).deliver_later
     redirect_to checkout_completed_path
