@@ -1,4 +1,5 @@
 <%= form_for @order, url: checkout_path, :method => "post"  do |cart| %>
-  Endereço de entrega = <%= cart.text_field :address, { value: @order.user.address } %><br>
+  Endereço de entrega: <br/>
+  <%= cart.text_area :address, { value: @order.user.address } %><br>
   <%= cart.submit "Finalizar compra" %>
 <% end %>

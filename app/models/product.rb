@@ -15,4 +15,14 @@ class Product < ApplicationRecord
     images.first.img.url(image_format)
   end
   
+  def images_url
+    images.map{
+     |i|
+      ind = i.img.url(:large).index('?')
+      i.img.url(:large)[0,ind]
+    }
+    
+    #['/system/images/imgs/000/000/008/medium/mulher.jpg','/system/images/imgs/000/000/009/medium/bike.jpg','/system/images/imgs/000/000/010/medium/caminho.jpg']
+  end
+  
 end
